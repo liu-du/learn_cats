@@ -9,9 +9,12 @@ scalacOptions ++= Seq(
   "-unchecked",           // warn about unchecked type parameters
   "-feature",             // warn about misused language features
   "-language:higherKinds",// allow higher kinded types without `import scala.language.higherKinds`
-  "-Xlint",               // enable handy linter warnings
+  // "-Xlint",               // enable handy linter warnings
   "-Xfatal-warnings",     // turn compiler warnings into errors
   // "-Ypartial-unification" // allow the compiler to unify type constructors of different arities
 )
 
-libraryDependencies += "org.typelevel" %% "cats-core" % "2.0.0"
+libraryDependencies ++= Seq(
+  "org.typelevel" %% "cats-core" % "2.0.0",
+  "org.scalacheck" %% "scalacheck" % "1.14.1" % "test"
+)

@@ -41,6 +41,9 @@ object PrintableMain extends App {
   val cola = Cat("coco", 11d / 12d, "black and white")
   val pudding = Cat("ding ding", 7d / 12d, "brown")
 
+  // interface method
   Printable.print(cola)
+
+  // extension method
   pudding.print
 }
