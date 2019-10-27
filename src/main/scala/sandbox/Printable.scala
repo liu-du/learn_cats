@@ -29,9 +29,10 @@ object PrintableInstances {
   def pure[T](fn: T => String) = new Printable[T] {
     def format(a: T): String = fn(a)
   }
-  implicit val printableString = pure[String](x => x.toString)
-  implicit val printableInt = pure[Int](x => x.toString)
-  implicit val printableDouble = pure[Double](x => x.toString)
+  implicit val printableString = pure[String](_.toString)
+  implicit val printableInt = pure[Int](_.toString)
+  implicit val printableBigInt = pure[BigInt](_.toString)
+  implicit val printableDouble = pure[Double](_.toString)
   implicit val printableBoolean = pure[Boolean](if (_) "yes" else "no")
   implicit val printableCat = new Printable[Cat] {
     def format(cat: Cat): String = s"${cat.name} is a ${String.format("%.1f", cat.age)} year-old ${cat.color} cat."
