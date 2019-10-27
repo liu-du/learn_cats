@@ -37,6 +37,7 @@ object PrintableInstances {
     def format(cat: Cat): String = s"${cat.name} is a ${String.format("%.1f", cat.age)} year-old ${cat.color} cat."
   }
   implicit def printableBox[A: Printable]: Printable[Box[A]] = Printable[A].contramap(_.value)
+  implicit val printableList = PrintableInstances.pure[List[Int]](_.toString)
 }
 
 // extension method (aka syntax)
