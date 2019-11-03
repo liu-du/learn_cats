@@ -37,6 +37,13 @@ object PrintableInstances {
   implicit val printableCat = new Printable[Cat] {
     def format(cat: Cat): String = s"${cat.name} is a ${String.format("%.1f", cat.age)} year-old ${cat.color} cat."
   }
+  implicit def printableTuple2[A: Printable, B: Printable] = pure[Tuple2[A, B]](_.toString)
+  implicit def printableTuple3[A: Printable, B: Printable, C: Printable] = pure[Tuple3[A, B, C]](_.toString)
+  implicit def printableTuple4[A: Printable, B: Printable, C: Printable, D: Printable] = pure[Tuple4[A, B, C, D]](_.toString)
+  implicit def printableTuple5[A: Printable, B: Printable, C: Printable, D: Printable, E: Printable] = pure[Tuple5[A, B, C, D, E]](_.toString)
+  implicit def printableTuple6[A: Printable, B: Printable, C: Printable, D: Printable, E: Printable, F: Printable] = pure[Tuple6[A, B, C, D, E, F]](_.toString)
+
+  implicit def printableOption[A: Printable] = pure[Option[A]](_.toString)
   implicit def printableBox[A: Printable]: Printable[Box[A]] = Printable[A].contramap(_.value)
   implicit val printableList = PrintableInstances.pure[List[Int]](_.toString)
 }

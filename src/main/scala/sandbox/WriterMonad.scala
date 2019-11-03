@@ -35,9 +35,6 @@ object WriterMonad {
     implicit def printableVector[A] = new Printable[Vector[A]] {
       def format(a: Vector[A]): String = a.toString
     }
-    implicit def printableProduct[A, B] = new Printable[Tuple2[A, B]] {
-      def format(a: (A, B)): String = a.toString
-    }
 
 
     val res2 = 10.pure[Logged]
